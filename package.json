@@ -4,17 +4,30 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon --w ./server --exec babel-node ./server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/YegorkaShalaiev/todo.git"
   },
-  "author": "",
+  "author": "yegor_shalaiev",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/YegorkaShalaiev/todo/issues"
   },
   "homepage": "https://github.com/YegorkaShalaiev/todo#readme",
-  "dependencies": {}
+  "devDependencies": {
+    "@babel/cli": "^7.17.3",
+    "@babel/core": "^7.17.4",
+    "@babel/node": "^7.16.8",
+    "@babel/preset-env": "^7.16.11",
+    "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "app-module-path": "^2.2.0",
+    "body-parser": "^1.19.1",
+    "config": "^3.3.7",
+    "express": "^4.17.2"
+  }
 }

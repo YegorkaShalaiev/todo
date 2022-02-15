@@ -1,17 +1,7 @@
-# Logs
-logs
-*.log
-
-# Dependency directories
-node_modules/
-
-# TypeScript v1 declaration files
-typings/
-
-# Optional npm cache directory
-.npm
-
-# dotenv environment variables file
-.env
-.env.test
-
+/node_modules/
+/npm-debug.log
+/.idea/
+/public/
+/build/
+/production_config/
+/logs/
