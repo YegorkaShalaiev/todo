@@ -4,7 +4,7 @@ import bodyParser from 'body-parser';
 
 const router = express.Router();
 
-router.use(bodyParser.urlencoded());
+router.use(bodyParser.urlencoded({extended: false}));
 
 router.use('/todo', todo);
 
