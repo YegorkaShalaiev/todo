@@ -2,9 +2,9 @@
   "name": "todo",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "start": "nodemon --w ./server --exec babel-node ./server/index.js",
+    "start": "nodemon -w ./backend --exec babel-node backend/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -26,9 +26,12 @@
   },
   "dependencies": {
     "app-module-path": "^2.2.0",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.1",
     "config": "^3.3.7",
     "express": "^4.17.2",
+    "express-validator": "^6.14.0",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.2.1"
   }
 }
