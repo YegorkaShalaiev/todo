@@ -1,11 +1,12 @@
 import express from "express";
-import todo from './todo';
 import bodyParser from 'body-parser';
+
+import auth from './auth';
 
 const router = express.Router();
 
 router.use(bodyParser.urlencoded({extended: false}));
 
-router.use('/todo', todo);
+router.use('/auth', auth);
 
 export default router;

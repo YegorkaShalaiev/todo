@@ -2,7 +2,7 @@ import "app-module-path/cwd";
 import express from "express";
 import config from 'config';
 import api from './api';
-import db from 'common/db';
+import db from 'backend/db';
 
 const { HOST, PORT } = config.get('server');
 
