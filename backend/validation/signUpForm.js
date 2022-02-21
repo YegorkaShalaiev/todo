@@ -1,5 +1,6 @@
 import { check, validationResult } from 'express-validator';
 import User from 'backend/models/User';
+import ValidationError from "backend/errors/ValidationError";
 
 export default [
     check('email')
@@ -30,8 +31,9 @@ export default [
         .custom((value, { req }) => value === req.body.password),
     (req, res, next) => {
         const errors = validationResult(req);
-        if (!errors.isEmpty())
-            return res.status(400).json({errors: errors.array()});
+        if (!errors.isEmpty()) {
+            return next(new ValidationError(errors.array()));
+        }
         next();
     }
 ];

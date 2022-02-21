@@ -10,7 +10,8 @@ const schema = new Schema({
     lists: [{
         type: Schema.Types.ObjectId,
         ref: 'List'
-    }]
+    }],
+    refreshToken: String
 });
 
 export default model('User', schema);

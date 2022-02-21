@@ -6,10 +6,8 @@ class Controller {
         this.update = this.update.bind(this);
     }
 
-    async create(req, res, data = null) {
-        const createData = data || req.body;
-
-        return this._model.create(createData);
+    async create(data) {
+        return this._model.create(data);
     };
 
     async get(data) {
@@ -17,7 +15,7 @@ class Controller {
     }
 
     async update(data) {
-        return this._model.update(data);
+        return this._model.updateOne(data);
     }
 }
 

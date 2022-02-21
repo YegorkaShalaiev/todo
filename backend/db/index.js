@@ -1,5 +1,7 @@
 import mongoose from 'mongoose';
 import config from "config";
+import log from 'backend/utils/log';
+
 const { CONNECTION_STRING } = config.get('db');
 
 export default {
@@ -9,9 +11,9 @@ export default {
     },
 
     async connect() {
-        mongoose.connection.on("connected", () => console.info("DB successfully connected..."));
-        mongoose.connection.on("disconnected", () => console.info("DB disconnected..."));
-        mongoose.connection.on( "error", e => console.error('DB connection error: ', e));
+        mongoose.connection.on("connected", () => log.info("DB successfully connected..."));
+        mongoose.connection.on("disconnected", () => log.info("DB disconnected..."));
+        mongoose.connection.on( "error", e => log.error('DB connection error: ', e));
 
         await mongoose.connect(CONNECTION_STRING, this.options);
     }

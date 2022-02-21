@@ -4,6 +4,8 @@ import config from 'config';
 import api from './api';
 import db from 'backend/db';
 
+import log from "backend/utils/log";
+
 const { HOST, PORT } = config.get('server');
 
 db.connect().then(() => {
@@ -13,10 +15,10 @@ db.connect().then(() => {
 
     app.listen(PORT, HOST, err => {
         if (err) {
-            console.error(err);
+            log.error(err);
             return;
         }
-        console.info(`Server is listening on ${HOST}:${PORT}`);
+        log.info(`Server is listening on ${HOST}:${PORT}`);
     });
 });
 
