@@ -3,5 +3,6 @@
 /.idea/
 /public/
 /build/
-/production_config/
+/config/production.json
 /logs/
+/client/dist/bundle.js

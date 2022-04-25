@@ -11,5 +11,8 @@
   "db": {
     "CONNECTION_STRING": "mongodb://localhost:27017"
   },
-  "env": "development"
+  "client": {
+    "PORT": 8080,
+    "HOST": "localhost"
+  }
 }

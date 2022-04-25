@@ -1,4 +1,4 @@
-import BaseError from 'backend/errors/BaseError';
+import BaseError from 'server/errors/BaseError';
 
 export default class ValidationError extends BaseError {
     constructor(errors) {

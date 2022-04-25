@@ -1,5 +1,5 @@
-import AuthController from "backend/controllers/AuthController";
-import User from 'backend/models/User';
+import AuthController from "server/controllers/AuthController";
+import User from 'server/models/User';
 
 const authController = new AuthController(User);
 

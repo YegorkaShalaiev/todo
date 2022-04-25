@@ -1,6 +1,6 @@
 import { check, validationResult } from 'express-validator';
-import User from 'backend/models/User';
-import ValidationError from "backend/errors/ValidationError";
+import User from 'server/models/User';
+import ValidationError from "server/errors/ValidationError";
 
 export default [
     check('email')

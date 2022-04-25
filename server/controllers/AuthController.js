@@ -4,7 +4,7 @@ import config from 'config';
 
 import Controller from './Controller';
 
-import { AuthorizationError } from 'backend/errors';
+import { AuthorizationError } from 'server/errors';
 
 class AuthController extends Controller {
     constructor(model) {

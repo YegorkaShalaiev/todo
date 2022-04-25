@@ -1,17 +1,24 @@
 import "app-module-path/cwd";
 import express from "express";
 import config from 'config';
-import api from './api';
-import db from 'backend/db';
+import db from 'server/db';
 
-import log from "backend/utils/log";
+import api from 'server/api';
+import staticResources from 'server/middleware/static';
+
+import log from "server/utils/log";
 
 const { HOST, PORT } = config.get('server');
+const isProduction = process.env.NODE_ENV === 'production';
 
 db.connect().then(() => {
     const app = express();
 
     app.use('/api', api);
+
+    if (isProduction) {
+        app.use(staticResources);
+    }
 
     app.listen(PORT, HOST, err => {
         if (err) {

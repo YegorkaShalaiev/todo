@@ -1,7 +1,7 @@
 import express from "express";
-import AuthController from "backend/controllers/AuthController";
-import User from 'backend/models/User';
-import validate from 'backend/validation';
+import AuthController from "server/controllers/AuthController";
+import User from 'server/models/User';
+import validate from 'server/validation';
 
 const router = express.Router();
 
