@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import config from "config";
-import log from 'backend/utils/log';
+import log from 'server/utils/log';
 
 const { CONNECTION_STRING } = config.get('db');
 
