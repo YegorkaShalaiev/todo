@@ -25,10 +25,20 @@ export default {
             {
                 test: /\.css$/,
                 use: ["style-loader", "css-loader"]
+            },
+            {
+                test: /\.svg$/,
+                issuer: /\.js?$/,
+                use: ['@svgr/webpack'],
             }
         ]
     },
-    resolve: { extensions: ["*", ".js", ".jsx"] },
+    resolve: {
+        alias: {
+            src: path.resolve(__dirname, 'client', 'src')
+        },
+        extensions: ["*", ".js", ".jsx"]
+    },
     devServer: {
         host: HOST,
         port: PORT,

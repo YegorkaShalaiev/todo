@@ -4,7 +4,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import Routes from './Routes';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './styles.less';
+import './styles/rootStyles.less';
 
 export default () => {
     return (
