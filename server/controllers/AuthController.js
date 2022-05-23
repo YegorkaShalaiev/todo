@@ -13,12 +13,6 @@ class AuthController extends Controller {
 
     async signUp(req, res, next) {
         const { email, password } = req.body;
-        const user = await this.get({email});
-
-        if (user) {
-            return next(new AuthorizationError);
-        }
-
         const passwordHash = await bcryptjs.hash(password, 10);
 
         await this.create({email, password: passwordHash});
@@ -28,11 +22,6 @@ class AuthController extends Controller {
 
     async login(req, res, next) {
         const user = await this.get({email: req.body.email});
-
-        if (!user) {
-            return next(new AuthorizationError);
-        }
-
         const passwordMatch = await bcryptjs.compare(req.body.password, user.password);
 
         if (!passwordMatch) {

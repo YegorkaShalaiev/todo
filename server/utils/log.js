@@ -8,7 +8,7 @@ const dailyRotateFile = new winston.transports.DailyRotateFile({
     dirname: 'logs',
     datePattern: 'DD-MM-YYYY',
     maxSize: '1m',
-    maxFiles: 2,
+    maxFiles: 1,
     level: 'warn'
 });
 

@@ -1,20 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { Link } from "react-router-dom";
+import useForm from "../../hooks/useForm";
+
+import { signUp } from "../../api/auth/signUp";
 
 import '../../styles/auth.less';
 
 export default () => {
-    const [formValues, setFormValues] = useState({
-        email: '', password: '', confirmPassword: ''
-    });
+    const fields = ['email', 'password', 'passwordConfirmation'];
 
-    const handleFormChange = e => {
-        setFormValues({...formValues, [e.target.name]: e.target.value});
-    }
+    const { values, errors, handleInputChange, handleSubmit } = useForm(signUp, fields);
 
     return (
-        <Form>
+        <Form noValidate onSubmit={handleSubmit}>
             <div>
                 <Form.Group className="auth__form-group" controlId="authEmail">
                     <Form.Control
@@ -22,9 +21,12 @@ export default () => {
                         type="email"
                         className="auth__form__control"
                         placeholder="Email"
-                        onChange={handleFormChange}
+                        onChange={handleInputChange}
+                        value={values.email}
+                        isInvalid={errors.email}
                     />
                     <Form.Label className="auth__form__label">Email address</Form.Label>
+                    <Form.Control.Feedback type="invalid">{errors.email}</Form.Control.Feedback>
                 </Form.Group>
 
                 <Form.Group className="auth__form-group" controlId="authPassword">
@@ -33,20 +35,28 @@ export default () => {
                         type="password"
                         className="auth__form__control"
                         placeholder="Password"
-                        onChange={handleFormChange}
+                        onChange={handleInputChange}
+                        value={values.password}
+                        isInvalid={errors.password}
+                        required
                     />
                     <Form.Label className="auth__form__label">Password</Form.Label>
+                    <Form.Control.Feedback type="invalid">{errors.password}</Form.Control.Feedback>
                 </Form.Group>
 
                 <Form.Group className="auth__form-group" controlId="authPasswordConfirm">
                     <Form.Control
-                        name='passwordConfirm'
+                        name='passwordConfirmation'
                         type="password"
                         className="auth__form__control"
                         placeholder="Confirm password"
-                        onChange={handleFormChange}
+                        onChange={handleInputChange}
+                        value={values.passwordConfirmation}
+                        isInvalid={errors.passwordConfirmation}
+                        required
                     />
                     <Form.Label className="auth__form__label">Confirm password</Form.Label>
+                    <Form.Control.Feedback type="invalid">{errors.passwordConfirmation}</Form.Control.Feedback>
                 </Form.Group>
             </div>
 
