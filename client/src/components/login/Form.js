@@ -1,18 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import useForm from "../../hooks/useForm";
+import { login } from "../../api/auth/login";
 
 export default () => {
-    const [formValues, setFormValues] = useState({
-        email: '', password: ''
-    });
-
-    const handleFormChange = e => {
-        setFormValues({...formValues, [e.target.name]: e.target.value});
-    }
+    const { values, errors, handleInputChange, handleSubmit } = useForm(login, ['email', 'password']);
 
     return (
-        <Form>
+        <Form noValidate onSubmit={handleSubmit}>
             <div>
                 <Form.Group className="auth__form-group" controlId="authEmail">
                     <Form.Control
@@ -20,9 +16,12 @@ export default () => {
                         type="email"
                         className="auth__form__control"
                         placeholder="Email"
-                        onChange={handleFormChange}
+                        onChange={handleInputChange}
+                        value={values.email}
+                        isInvalid={errors.email}
                     />
                     <Form.Label className="auth__form__label">Email address</Form.Label>
+                    <Form.Control.Feedback type="invalid">{errors.email}</Form.Control.Feedback>
                 </Form.Group>
 
                 <Form.Group className="auth__form-group" controlId="authPassword">
@@ -31,9 +30,12 @@ export default () => {
                         type="password"
                         className="auth__form__control"
                         placeholder="Password"
-                        onChange={handleFormChange}
+                        onChange={handleInputChange}
+                        value={values.password}
+                        isInvalid={errors.password}
                     />
                     <Form.Label className="auth__form__label">Password</Form.Label>
+                    <Form.Control.Feedback type="invalid">{errors.password}</Form.Control.Feedback>
                 </Form.Group>
             </div>
 

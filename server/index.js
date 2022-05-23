@@ -1,5 +1,6 @@
 import "app-module-path/cwd";
 import express from "express";
+import cors from 'cors';
 import config from 'config';
 import db from 'server/db';
 
@@ -13,6 +14,8 @@ const isProduction = process.env.NODE_ENV === 'production';
 
 db.connect().then(() => {
     const app = express();
+
+    app.use(cors());
 
     app.use('/api', api);
 

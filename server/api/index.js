@@ -11,7 +11,7 @@ import authenticate from 'server/api/auth';
 const router = express.Router();
 
 router.use(cookieParser());
-router.use(bodyParser.urlencoded({extended: false}));
+router.use(bodyParser.json());
 
 router.use('/auth', authenticate);
 router.use(authorize);
