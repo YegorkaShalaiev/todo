@@ -1,0 +1,40 @@
+@import '../colors.less';
+
+button {
+  border: none !important;
+  background-color: transparent;
+}
+
+ul {
+  li {
+    display: inline-block;
+
+    &:not(:first-child) {
+      margin-left: 1rem;
+    }
+  }
+
+  list-style: none;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+img {
+  width: 2.1rem !important;
+  height: 1.4rem !important;
+}
+
+.lang-switcher-btn {
+  background-color: transparent !important;
+
+  &:hover, &:focus, &:active {
+    box-shadow: none !important;
+  }
+
+  span {
+    display: inline-block;
+    margin-right: .6rem;
+    color: @black;
+    font-weight: bold;
+  }
+}

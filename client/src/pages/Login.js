@@ -4,11 +4,15 @@ import LoginForm from '../components/login/Form';
 import LoginImage from '../assets/login.svg';
 
 import '../styles/auth.less';
+import LanguageSwitcher from "../components/shared/LanguageSwitcher";
 
 export default () => {
     return (
         <div className="app wrapper">
             <div className="container h-100">
+                <div className='language-switcher'>
+                    <LanguageSwitcher/>
+                </div>
                 <div className="row h-100 align-items-center">
                     <div className="col d-flex justify-content-center h-50">
                         <div className="auth loginPage">

@@ -2,6 +2,14 @@
 
 .wrapper {
   background-color:@lightgray !important;
+  position: relative;
+}
+
+.language-switcher {
+  display: inline-block;
+  position: absolute;
+  top: 20px;
+  right: 20px;
 }
 
 .auth {
@@ -152,7 +160,7 @@
     .invalid-feedback {
       margin: 0;
       padding: 0;
-      font-size: 0.6rem;
+      font-size: 0.7rem;
       color: @red;
       position: absolute;
       transform: translate(.8rem, -1.8rem);
@@ -174,6 +182,7 @@
     width: 100%;
     color: @white;
     border-radius: 2px;
+    min-height: 2rem;
 
     &:hover {
       background-color: @white;
@@ -226,7 +235,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: end;
-    margin-top: 1rem;
+    margin-top: .5rem;
     color: @black;
     font-size: .7rem;
 

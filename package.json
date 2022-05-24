@@ -52,8 +52,11 @@
     "cross-env": "^7.0.3",
     "express": "^4.17.2",
     "express-validator": "^6.14.0",
+    "i18next": "^21.8.4",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.2.1",
+    "react-country-flag": "^3.0.2",
+    "react-i18next": "^11.16.9",
     "winston": "^3.6.0",
     "winston-daily-rotate-file": "^4.6.1"
   }

@@ -5,6 +5,7 @@ import Routes from './Routes';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/rootStyles.less';
+import './services/i18next';
 
 export default () => {
     return (
