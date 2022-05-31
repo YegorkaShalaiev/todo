@@ -1,1 +1,6 @@
-require: '@babel/register'
+spec: 'server/test'
+require: ['@babel/register', 'server/test/fixtures.js']
+reporter: 'spec'
+timeout: 120000
+parallel: false
+recursive: true
