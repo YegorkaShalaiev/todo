@@ -7,7 +7,6 @@ import ValidationError from "server/errors/ValidationError";
 export default [
     check('email', ErrorCodes.INVALID_VALUE)
         .trim()
-        .normalizeEmail()
         .notEmpty()
         .bail()
         .isEmail()

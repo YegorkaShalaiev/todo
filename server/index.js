@@ -11,26 +11,30 @@ import log from "server/utils/log";
 
 const { HOST, PORT } = config.get('server');
 const isProduction = process.env.NODE_ENV === 'production';
+const isTest = process.env.NODE_ENV === 'test';
 
-db.connect().then(() => {
-    const app = express();
+const app = express();
+
+export async function start(dbOpts) {
+    await db.connect(dbOpts);
 
     app.use(cors());
-
     app.use('/api', api);
 
-    if (isProduction) {
-        app.use(staticResources);
-    }
+    isProduction && app.use(staticResources);
 
     app.listen(PORT, HOST, err => {
         if (err) {
             log.error(err);
             return;
         }
-        log.info(`Server is listening on ${HOST}:${PORT}`);
+        log.info(`${isTest ? 'Test server' : 'Server'} is listening on ${HOST}:${PORT}`);
     });
-});
+}
+
+!isTest && start();
+
+export default app;
 
 
 
