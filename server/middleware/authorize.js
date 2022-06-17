@@ -1,8 +1,19 @@
-import AuthController from "server/controllers/AuthController";
-import User from 'server/models/User';
-
-const authController = new AuthController(User);
+import tokenService from 'server/services/TokenService';
+import ApiError from "server/errors/ApiError";
 
 export default async (req, res, next) => {
-    await authController.authorize(req, res, next);
+    const authorizationHeader = req.headers.authorization;
+
+    if (authorizationHeader) {
+        const accessToken = authorizationHeader.split(' ')[1];
+        const userData = tokenService.validateToken(accessToken, 'ACCESS');
+
+        if (userData) {
+            req.user = userData;
+
+            return next();
+        }
+    }
+
+    return next(ApiError.AuthorizationError());
 }

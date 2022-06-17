@@ -1,7 +1,7 @@
 import winston, { createLogger, format, transports } from 'winston';
 import 'winston-daily-rotate-file';
 
-const { prettyPrint, simple } = format;
+const { prettyPrint, simple, combine, timestamp, colorize } = format;
 
 const dailyRotateFile = new winston.transports.DailyRotateFile({
     filename: '%DATE%.log',
@@ -9,13 +9,13 @@ const dailyRotateFile = new winston.transports.DailyRotateFile({
     datePattern: 'DD-MM-YYYY',
     maxSize: '1m',
     maxFiles: 1,
-    level: 'warn'
+    level: 'warn',
+    format: combine(timestamp({format: 'DD-MM-YYYY HH:mm:ss'}), prettyPrint())
 });
 
 const log = createLogger({
-    format: prettyPrint(),
     transports: [
-        new transports.Console({format: simple()}),
+        new transports.Console({format: combine(colorize(), simple())}),
         dailyRotateFile
     ]
 });
