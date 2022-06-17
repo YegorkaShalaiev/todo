@@ -1,5 +1,5 @@
-import { NotFoundError } from "server/errors";
+import ApiError from "server/errors/ApiError";
 
-export default (req, res, next) => {
-    return next(new NotFoundError);
+export default () => {
+    throw ApiError.NotFoundError();
 }
