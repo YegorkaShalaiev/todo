@@ -2,7 +2,7 @@ import { check } from 'express-validator';
 import User from "../models/User";
 import handleValidationErrors from "server/middleware/handleValidationErrors";
 import * as ErrorCodes from "server/errors/codes";
-import ValidationError from "server/errors/ValidationError";
+import ApiError from "server/errors/ApiError";
 
 export default [
     check('email', ErrorCodes.INVALID_VALUE)
@@ -15,7 +15,7 @@ export default [
             const user = await User.findOne({email: value});
 
             if (!user) {
-                throw new ValidationError(ErrorCodes.USER_DOES_NOT_EXIST);
+                throw ApiError.ValidationError(ErrorCodes.USER_DOES_NOT_EXIST);
             }
         }),
     check('password', ErrorCodes.INVALID_VALUE)
