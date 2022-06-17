@@ -4,7 +4,7 @@ import cors from 'cors';
 import config from 'config';
 import db from 'server/db';
 
-import api from 'server/api';
+import router from 'server/router';
 import staticResources from 'server/middleware/static';
 
 import log from "server/utils/log";
@@ -19,7 +19,8 @@ export async function start(dbOpts) {
     await db.connect(dbOpts);
 
     app.use(cors());
-    app.use('/api', api);
+
+    app.use('/api', router);
 
     isProduction && app.use(staticResources);
 
