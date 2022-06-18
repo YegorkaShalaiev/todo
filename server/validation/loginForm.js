@@ -1,5 +1,5 @@
 import { check } from 'express-validator';
-import User from "../models/User";
+import User from "server/models/User";
 import handleValidationErrors from "server/middleware/handleValidationErrors";
 import * as ErrorCodes from "server/errors/codes";
 import ApiError from "server/errors/ApiError";

@@ -13,7 +13,10 @@ describe('Auth: Sign Up',  () => {
         const user = await User.findOne({email});
 
         expect(res).to.have.status(201);
+        expect(Object.keys(res.body).length).to.be.equal(1);
+        expect(res.body.accessToken).to.be.a('string');
         expect(res.headers['set-cookie']).to.be.an('array').to.have.lengthOf(1);
+        expect(res.headers['set-cookie'][0].split('=')[0]).to.be.equal('refreshToken');
         expect(user).to.be.an('object').that.is.not.empty;
         expect(user.email).to.equal(email);
     });
