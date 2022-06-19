@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Alert } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
@@ -12,7 +12,7 @@ import '../../styles/auth.less';
 export default () => {
     const { t } = useTranslation();
     const fields = ['email', 'password', 'passwordConfirmation'];
-    const { values, errors, handleInputChange, handleSubmit } = useForm(signUp, fields);
+    const { values, fieldErrors: errors, handleInputChange, handleSubmit, error } = useForm(signUp, fields);
 
     return (
         <Form noValidate onSubmit={handleSubmit}>
@@ -25,10 +25,10 @@ export default () => {
                         placeholder="Email"
                         onChange={handleInputChange}
                         value={values.email}
-                        isInvalid={!!errors.email}
+                        isInvalid={!!errors.email || error}
                     />
                     <Form.Label className="auth__form__label">{t('auth.placeholders.email')}</Form.Label>
-                    <Form.Control.Feedback type="invalid">{t(`errors.${errors.email}`)}</Form.Control.Feedback>
+                    <Form.Control.Feedback type="invalid">{!error && t(`errors.${errors.email}`)}</Form.Control.Feedback>
                 </Form.Group>
 
                 <Form.Group className="auth__form-group" controlId="authPassword">
@@ -39,11 +39,11 @@ export default () => {
                         placeholder="Password"
                         onChange={handleInputChange}
                         value={values.password}
-                        isInvalid={!!errors.password}
+                        isInvalid={!!errors.password || error}
                         required
                     />
                     <Form.Label className="auth__form__label">{t('auth.placeholders.password')}</Form.Label>
-                    <Form.Control.Feedback type="invalid">{t(`errors.${errors.password}`)}</Form.Control.Feedback>
+                    <Form.Control.Feedback type="invalid">{!error && t(`errors.${errors.password}`)}</Form.Control.Feedback>
                 </Form.Group>
 
                 <Form.Group className="auth__form-group" controlId="authPasswordConfirm">
@@ -54,13 +54,17 @@ export default () => {
                         placeholder="Confirm password"
                         onChange={handleInputChange}
                         value={values.passwordConfirmation}
-                        isInvalid={!!errors.passwordConfirmation}
+                        isInvalid={!!errors.passwordConfirmation || error}
                         required
                     />
                     <Form.Label className="auth__form__label">{t('auth.placeholders.passwordConfirmation')}</Form.Label>
-                    <Form.Control.Feedback type="invalid">{t(`errors.${errors.passwordConfirmation}`)}</Form.Control.Feedback>
+                    <Form.Control.Feedback type="invalid">{!error && t(`errors.${errors.passwordConfirmation}`)}</Form.Control.Feedback>
                 </Form.Group>
             </div>
+
+            {
+                error && <Alert variant={'danger'} className="auth__form__alert">{t(`errors.${error}`)}</Alert>
+            }
 
             <div className='d-flex flex-column'>
                 <Button size="sm" type="submit" className='auth__form__submit'>

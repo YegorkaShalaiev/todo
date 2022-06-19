@@ -10,26 +10,29 @@ export default (onSubmit, fields) => {
     });
 
     const [ values, setValues ] = useState({...initialValues});
-    const [ errors, setErrors ] = useState({...initialValues});
+    const [ fieldErrors, setFieldErrors ] = useState({...initialValues});
+    const [ error, setError ] = useState(null);
 
     const handleInputChange = e => {
         e.persist();
         setValues({...values, [e.target.name]: e.target.value});
-        errors[e.target.name] && setErrors({...errors, [e.target.name]: null});
+        fieldErrors[e.target.name] && setFieldErrors({...fieldErrors, [e.target.name]: null});
     }
 
     const handleSubmit = e => {
         e.preventDefault();
         onSubmit(values).then(data => {
-            data.errors && setErrors({...errors, ...data.errors})
+            data.errors && setFieldErrors({...fieldErrors, ...data.errors});
+            data.error && setError(data.error);
         });
     }
 
     return {
         values,
-        errors,
+        fieldErrors,
         handleInputChange,
-        handleSubmit
+        handleSubmit,
+        error
     }
 
 }
