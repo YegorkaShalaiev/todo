@@ -2,7 +2,7 @@ import { expect } from 'chai';
 
 import { post } from 'server/test/utils';
 import * as ErrorCodes from 'server/errors/codes';
-import User from "../../models/User";
+import User from "server/models/User";
 
 const url = '/api/auth/login';
 const password = 123456790;
