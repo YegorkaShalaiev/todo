@@ -2,12 +2,14 @@ import React from "react";
 import { Button, Form, Alert } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import useForm from "../../hooks/useForm";
-import { login } from "../../api/auth/login";
+
+import useForm from "hooks/useForm";
+
+import AuthService from "services/AuthService";
 
 export default () => {
     const { t } = useTranslation();
-    const { values, fieldErrors: errors, handleInputChange, handleSubmit, error } = useForm(login, ['email', 'password']);
+    const { values, fieldErrors: errors, handleInputChange, handleSubmit, error } = useForm(AuthService.login, ['email', 'password']);
 
     return (
         <Form noValidate onSubmit={handleSubmit}>

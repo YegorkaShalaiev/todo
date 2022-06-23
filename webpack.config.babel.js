@@ -35,7 +35,12 @@ export default {
     },
     resolve: {
         alias: {
-            src: path.resolve(__dirname, 'client', 'src')
+            assets: path.resolve(__dirname, 'client/src/assets'),
+            components: path.resolve(__dirname, 'client/src/components'),
+            hooks: path.resolve(__dirname, 'client/src/hooks'),
+            pages: path.resolve(__dirname, 'client/src/pages'),
+            services: path.resolve(__dirname, 'client/src/services'),
+            styles: path.resolve(__dirname, 'client/src/styles')
         },
         extensions: ["*", ".js", ".jsx"]
     },

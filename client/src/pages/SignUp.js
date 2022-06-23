@@ -1,10 +1,10 @@
 import React from 'react';
 
-import SignUpForm from '../components/signUp/Form';
-import SignUpImage from '../assets/signup.svg';
-import LanguageSwitcher from "../components/shared/LanguageSwitcher";
+import SignUpForm from 'components/signUp/Form';
+import LanguageSwitcher from "components/shared/LanguageSwitcher";
+import SignUpImage from 'assets/signup.svg';
 
-import '../styles/auth.less';
+import 'styles/auth.less';
 
 export default () => {
     return (

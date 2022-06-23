@@ -1,8 +1,10 @@
 import React from "react";
 import { OverlayTrigger, Button, Popover } from 'react-bootstrap';
 import { useTranslation } from "react-i18next";
+
 import FlagIcon from './FlagIcon';
-import '../../styles/shared/languageSwitcher.less';
+
+import 'styles/shared/languageSwitcher.less';
 
 export default () => {
     const { i18n, t } = useTranslation();

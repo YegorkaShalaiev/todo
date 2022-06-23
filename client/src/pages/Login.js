@@ -1,10 +1,10 @@
 import React from 'react';
 
-import LoginForm from '../components/login/Form';
-import LoginImage from '../assets/login.svg';
+import LoginForm from 'components/login/Form';
+import LanguageSwitcher from "components/shared/LanguageSwitcher";
+import LoginImage from 'assets/login.svg';
 
-import '../styles/auth.less';
-import LanguageSwitcher from "../components/shared/LanguageSwitcher";
+import 'styles/auth.less';
 
 export default () => {
     return (
